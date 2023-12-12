@@ -117,3 +117,22 @@ class MyPromise {
     });
   }
 }
+
+function testMyPromise() {
+  return new MyPromise((resolve, reject) => {
+    setTimeout(() => {
+      const randomValue = Math.random();
+      if (randomValue > 0.5) {
+        resolve(`Promise resolved ${randomValue}`);
+      } else {
+        reject(`Promise rejected ${randomValue}`);
+      }
+    }, 1000);
+  });
+}
+
+const myPromise = testMyPromise();
+
+myPromise
+  .then(value => console.log(value))
+  .catch(reason => console.log(reason));
