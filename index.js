@@ -131,8 +131,14 @@ function testMyPromise() {
   });
 }
 
-const myPromise = testMyPromise();
+async function test(){
+  try{
+const myPromise = await testMyPromise();
+    console.log(myPromise);
+}
+  catch(err){
+    console.error(err);
+  }
+}
 
-myPromise
-  .then(value => console.log(value))
-  .catch(reason => console.log(reason));
+test();
